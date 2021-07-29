@@ -13,11 +13,11 @@ const SpaceData = props => {
         <div>
             <h1>Space Stuff</h1>
             {props.isFetching && <p>Fetching Space Stuff</p>}
-            <div>
+            <span>
                 {props.data.map(data => (
                     <h2 key={data.url}>{data.ships}</h2>
                 ))}
-            </div>
+            </span>
             {props.error && <p className="error">{props.error}</p>}
             <button onClick={fetchSpace}>Fetch Space Stuff</button>
         </div>

@@ -1,16 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux';
 import logger from 'redux-logger';
 import thunk from 'redux-thunk';
 import reducer from './reducers/spaceReducer'
+import SpaceData from './components/SpaceData'
 
 const store = createStore(reducer, applyMiddleware(logger, thunk));
 
+function App() {
+  return (
+    <div className="App">
+      <SpaceData />
+    </div>
+  );
+}
+
+const rootElement = document.getElementById('root');
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
