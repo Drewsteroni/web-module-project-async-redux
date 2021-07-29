@@ -1,14 +1,15 @@
 import axios from 'axios';
-import { spaceAPI } from '../components/SpaceAPI'
 
-export const DISPLAY_DATA = "DISPLAY_DATA"
+export const DISPLAY_DATA_START = "DISPLAY_DATA_START";
+export const DISPLAY_DATA_SUCCESS = "DISPLAY_DATA_SUCCESS";
+export const DISPLAY_DATA_FAIL = "DISPLAY_DATA_FAIL";
 
 export const displayData = () => dispatch => {
-    dispatch({ type: DISPLAY_DATA });
+    dispatch({ type: DISPLAY_DATA_START });
     axios
-        .get(spaceAPI)
+        .get('https://api.spacexdata.com/v4/launches/latest')
         .then(res => 
-            dispatch({ type: DISPLAY_DATA, payload: res.data })
+            dispatch({ type: DISPLAY_DATA_SUCCESS, payload: res.data.results })
         )
-        .catch("data not found")
+        .catch(err => dispatch({ type: DISPLAY_DATA_FAIL, payload: err}));
 }

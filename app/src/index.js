@@ -8,12 +8,8 @@ import { Provider } from 'react-redux';
 import logger from 'redux-logger';
 import thunk from 'redux-thunk';
 import reducer from './reducers/spaceReducer'
-import { spaceAPI } from './components/SpaceAPI'
-
 
 const store = createStore(reducer, applyMiddleware(logger, thunk));
-
-
 
 ReactDOM.render(
   <React.StrictMode>
